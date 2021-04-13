@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HandWritingRecognitionServer
+{
+    class Program
+    {
+        const int portNo = 500;
+        private const string ipAddress = "127.0.0.1";
+
+        static void Main(string[] args)
+        {
+            //string path = "C:\\Users\\IMOE001\\Desktop\\1.jpg";
+
+            //Console.WriteLine(TesseractTextFromImage.ConvertImageToText(path));
+            //Console.ReadLine();
+
+            System.Net.IPAddress localAdd = System.Net.IPAddress.Parse(ipAddress);
+            TcpListener listener = new TcpListener(localAdd, portNo);
+            Console.WriteLine("Listening to ip {0} port: {1}", ipAddress, portNo);
+            // Start listen to incoming connection requests
+            listener.Start();
+
+            // infinite loop.
+            while (true)
+            {
+                // AcceptTcpClient - Blocking call
+                // Execute will not continue until a connection is established
+
+                // We create an instance of ChatClient so the server will be able to 
+                // serve multiple clients at the same time.
+                PaintClient user = new PaintClient(listener.AcceptTcpClient());
+
+            }
+
+                //Server server = new Server();
+                //try
+                //{
+                //    server.();
+                //}
+                //catch (Exception e)
+                //{
+                //    Console.WriteLine(e.Message);
+                //}
+
+
+        }
+    }
+}
