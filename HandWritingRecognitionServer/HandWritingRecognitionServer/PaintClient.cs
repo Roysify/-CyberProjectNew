@@ -83,7 +83,7 @@ namespace HandWritingRecognitionServer
                     ns = _client.GetStream();
                 }
                 // Send data to the client
-                byte[] bytesToSend = System.Text.Encoding.ASCII.GetBytes(rsa.Encrypt(ProtocolManager.CreateProtocol(result, PaintClientProtocolType.result)));
+                byte[] bytesToSend = System.Text.Encoding.ASCII.GetBytes(rsa.Encrypt(ProtocolManager.CreateProtocol(result, PaintClientProtocolType.Result)));
                 ns.Write(bytesToSend, 0, bytesToSend.Length);
                 ns.Flush();
             }

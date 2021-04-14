@@ -51,6 +51,7 @@ namespace HandWritingRecognitionClient
             this.label5.TabIndex = 11;
             this.label5.Text = "Forgot Your Password ?";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Registration_Btn
             // 
@@ -66,6 +67,7 @@ namespace HandWritingRecognitionClient
             this.Registration_Btn.TabIndex = 12;
             this.Registration_Btn.Text = "Create an account";
             this.Registration_Btn.UseVisualStyleBackColor = false;
+            this.Registration_Btn.Click += new System.EventHandler(this.Registration_Btn_Click);
             // 
             // button1
             // 
@@ -90,6 +92,10 @@ namespace HandWritingRecognitionClient
             this.Controls.Add(this.Registration_Btn);
             this.Controls.Add(this.label5);
             this.Name = "LoginForm";
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.Username_Box, 0);
+            this.Controls.SetChildIndex(this.Password_Box, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.Registration_Btn, 0);

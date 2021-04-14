@@ -2,6 +2,7 @@
 {
     public class PaintClientProtocolType
     {
+        //agreed consts serving as message types
         public const int ErvrorInvalidPasswordAndUsername = 0;
         public const int OkValidPasswordAndUsername = 1;
         public const int SendDetails = 2;
@@ -12,6 +13,8 @@
         public const int SendUsername = 7;
         public const int UsernameExists = 8;
         public const int UserAdded = 9;
-        public const int result = 10;
+        public const int Result = 10;
+        public const int SendEmail = 11;
+
     }
 }

@@ -33,7 +33,17 @@ namespace HandWritingRecognitionClient
             this.label4 = new System.Windows.Forms.Label();
             this.Register_BTN = new System.Windows.Forms.Button();
             this.Back_BTN = new System.Windows.Forms.Button();
+            this.EmailBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // Password_Box
+            // 
+            this.Password_Box.Text = "";
+            // 
+            // Username_Box
+            // 
+            this.Username_Box.Text = "";
             // 
             // label1
             // 
@@ -49,7 +59,6 @@ namespace HandWritingRecognitionClient
             this.Confirm_Box.PasswordChar = '*';
             this.Confirm_Box.Size = new System.Drawing.Size(114, 20);
             this.Confirm_Box.TabIndex = 12;
-            this.Confirm_Box.Text = "123456";
             // 
             // label4
             // 
@@ -69,7 +78,7 @@ namespace HandWritingRecognitionClient
             this.Register_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Register_BTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Register_BTN.ForeColor = System.Drawing.Color.White;
-            this.Register_BTN.Location = new System.Drawing.Point(113, 267);
+            this.Register_BTN.Location = new System.Drawing.Point(113, 302);
             this.Register_BTN.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Register_BTN.Name = "Register_BTN";
             this.Register_BTN.Size = new System.Drawing.Size(90, 27);
@@ -94,10 +103,32 @@ namespace HandWritingRecognitionClient
             this.Back_BTN.UseVisualStyleBackColor = false;
             this.Back_BTN.Click += new System.EventHandler(this.Back_BTN_Click);
             // 
+            // EmailBox
+            // 
+            this.EmailBox.Location = new System.Drawing.Point(113, 255);
+            this.EmailBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.EmailBox.Name = "EmailBox";
+            this.EmailBox.Size = new System.Drawing.Size(140, 20);
+            this.EmailBox.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label5.Location = new System.Drawing.Point(13, 251);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 20);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Email";
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.EmailBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.Back_BTN);
             this.Controls.Add(this.Confirm_Box);
             this.Controls.Add(this.label4);
@@ -113,6 +144,8 @@ namespace HandWritingRecognitionClient
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.Confirm_Box, 0);
             this.Controls.SetChildIndex(this.Back_BTN, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.EmailBox, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,5 +157,7 @@ namespace HandWritingRecognitionClient
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button Register_BTN;
         private System.Windows.Forms.Button Back_BTN;
+        private System.Windows.Forms.TextBox EmailBox;
+        private System.Windows.Forms.Label label5;
     }
 }

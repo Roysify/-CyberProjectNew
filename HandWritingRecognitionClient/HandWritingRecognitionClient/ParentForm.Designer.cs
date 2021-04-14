@@ -81,7 +81,6 @@ namespace HandWritingRecognitionClient
             // 
             // label1
             // 
-            this.label1.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.label1.AutoSize = true;
             this.label1.Enabled = false;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

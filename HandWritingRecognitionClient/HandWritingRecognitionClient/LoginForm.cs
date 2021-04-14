@@ -36,7 +36,7 @@ namespace HandWritingRecognitionClient
 
             }
             else
-                MessageBox.Show("Bad");
+                MessageBox.Show("Details are not viable");
 
         }
 
@@ -46,5 +46,18 @@ namespace HandWritingRecognitionClient
 
         }
 
+        private void Registration_Btn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegistrationForm registrationForm = new RegistrationForm();
+            registrationForm.Show();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ForgotPassword fp = new ForgotPassword();
+            fp.Show();
+        }
     }
 }

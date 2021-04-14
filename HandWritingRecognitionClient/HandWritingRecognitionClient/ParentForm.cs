@@ -38,7 +38,7 @@ namespace HandWritingRecognitionClient
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -105,17 +105,24 @@ namespace HandWritingRecognitionClient
 
         protected void CreateTCPConnection()//creates connection using the tcp client object
         {
-            rsa = new RSA();
-            client = new TcpClient();
-            client.Connect(ipAddress, portNo);
-            clientConnected = true;
+            try
+            {
+                rsa = new RSA();
+                client = new TcpClient();
+                client.Connect(ipAddress, portNo);
+                clientConnected = true;
 
-            data = new byte[client.ReceiveBufferSize];
+                data = new byte[client.ReceiveBufferSize];
 
-            SendPublicKey(rsa.GetPublicKey(), PaintClientProtocolType.SendPublicKey);
+                SendPublicKey(rsa.GetPublicKey(), PaintClientProtocolType.SendPublicKey);
 
-            client.GetStream().BeginRead(data, 0, System.Convert.ToInt32(client.ReceiveBufferSize), ReceiveMessage, null);
+                client.GetStream().BeginRead(data, 0, System.Convert.ToInt32(client.ReceiveBufferSize), ReceiveMessage, null);
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show("could not find server");
+            }
         }
 
         private void ReadProtocol(string msg) //used to locate the right place for the message
@@ -143,7 +150,7 @@ namespace HandWritingRecognitionClient
                 case PaintClientProtocolType.SendMessage:
                     //this.Invoke(new delUpdateHistory(UpdateHistory), str[1]);
                     break;
-                case PaintClientProtocolType.result:
+                case PaintClientProtocolType.Result:
                     pf.GotAResult(str[1]);
                     break;
                 default:

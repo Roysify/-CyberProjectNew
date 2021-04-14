@@ -40,18 +40,22 @@ namespace HandWritingRecognitionClient
             // Password_Box
             // 
             this.Password_Box.Location = new System.Drawing.Point(441, 147);
+            this.Password_Box.Visible = false;
             // 
             // Username_Box
             // 
             this.Username_Box.Location = new System.Drawing.Point(441, 97);
+            this.Username_Box.Visible = false;
             // 
             // label3
             // 
             this.label3.Location = new System.Drawing.Point(341, 145);
+            this.label3.Visible = false;
             // 
             // label2
             // 
             this.label2.Location = new System.Drawing.Point(341, 96);
+            this.label2.Visible = false;
             // 
             // label1
             // 
@@ -72,6 +76,7 @@ namespace HandWritingRecognitionClient
             this.Submit_Btn.TabIndex = 17;
             this.Submit_Btn.Text = "Submit";
             this.Submit_Btn.UseVisualStyleBackColor = false;
+            this.Submit_Btn.Click += new System.EventHandler(this.Submit_Btn_Click);
             // 
             // Send_BTN
             // 
