@@ -52,7 +52,7 @@ namespace HandWritingRecognitionClient
                 // send the text
                 ns.Write(data, 0, data.Length);
                 ns.Flush();
-                MessageBox.Show("Sent !");
+                //MessageBox.Show("Sent !");
             }
             catch (Exception ex)
             {

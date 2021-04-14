@@ -146,6 +146,7 @@ namespace HandWritingRecognitionServer
                     }
                     else if (pictureIsSent)
                     {
+                        pictureIsSent = false;
                         SendResult(TesseractTextFromImage.ConvertImageToText(data));
                     }
                     else
