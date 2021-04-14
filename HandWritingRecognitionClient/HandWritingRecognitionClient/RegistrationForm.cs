@@ -15,7 +15,7 @@ namespace HandWritingRecognitionClient
             InitializeComponent();
         }
 
-        private void Register_BTN_Click(object sender, EventArgs e)
+        private void Register_BTN_Click(object sender, EventArgs e) //register nutton click
         {
             if (FieldCheck())
             {
@@ -44,7 +44,7 @@ namespace HandWritingRecognitionClient
         private void IsUsernameExists(string user)
         {
             SendMessage(user, PaintClientProtocolType.SendUsername);
-        }
+        }//sends message to the server with username from user
 
         private void Back_BTN_Click(object sender, EventArgs e)
         {
@@ -52,9 +52,9 @@ namespace HandWritingRecognitionClient
             LoginForm clientLogin = new LoginForm();
             clientLogin.Show();
 
-        }
+        }//return to log in form
 
-        private void RegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void RegistrationForm_FormClosed(object sender, FormClosedEventArgs e)//window closed
         {
             Application.Exit();
         }

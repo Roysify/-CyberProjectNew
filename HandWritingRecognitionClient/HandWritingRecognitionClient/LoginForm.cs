@@ -11,7 +11,7 @@ namespace HandWritingRecognitionClient
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //logging in
         {
             if (FieldCheck())
             {
@@ -40,7 +40,7 @@ namespace HandWritingRecognitionClient
 
         }
 
-        private void Client_Login_FormClosed(object sender, FormClosedEventArgs e)
+        private void Client_Login_FormClosed(object sender, FormClosedEventArgs e) //window closed
         {
             Application.Exit();
 

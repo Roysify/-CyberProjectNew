@@ -31,9 +31,9 @@ namespace HandWritingRecognitionClient
 
             }
 
-        }
+        }//earse the board
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//send picture button press
         {
             SendMessage("f", PaintClientProtocolType.SendPicture);
             Thread.Sleep(1000);
@@ -41,7 +41,7 @@ namespace HandWritingRecognitionClient
 
         }
 
-        private void SendPicture(byte[] pictureByte)
+        private void SendPicture(byte[] pictureByte) //sends picture
         {
             try
             {
@@ -60,7 +60,7 @@ namespace HandWritingRecognitionClient
             }
         }
 
-        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn) //image to byte array
         {
             ImageConverter converter = new ImageConverter();
             return (byte[])converter.ConvertTo(imageIn, typeof(byte[]));
@@ -71,7 +71,7 @@ namespace HandWritingRecognitionClient
             lastPoint = e.Location;//we assign the lastPoint to the current mouse position: e.Location ('e' is from the MouseEventArgs passed into the MouseDown event)
 
             isMouseDown = true;//we set to true because our mouse button is down (clicked)
-        }
+        }//used to locate mouse movment
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
@@ -81,7 +81,7 @@ namespace HandWritingRecognitionClient
 
             //set the previous point back to null if the user lets go of the mouse button
 
-        }
+        }//used to locate mouse movment
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -123,15 +123,15 @@ namespace HandWritingRecognitionClient
 
             }
 
-        }
+        }//used to locate mouse movment
 
         public void GotAResult(string result)
         {
             this.Invoke(new DelGotAResult(ShowResult), result);
-        }
+        } //using delegate to show the result from server
         protected delegate void DelGotAResult(string result);
 
-        public void ShowResult(string result)
+        public void ShowResult(string result) //shows result
         {
             ResultTxtBox.Text = result;
         }

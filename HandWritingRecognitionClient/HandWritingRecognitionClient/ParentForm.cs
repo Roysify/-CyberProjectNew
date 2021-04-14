@@ -8,15 +8,15 @@ namespace HandWritingRecognitionClient
 {
     public partial class ParentForm : Form
     {
-        protected int portNo = 500;
-        protected string ipAddress = "127.0.0.1";
-        protected static TcpClient client;
-        protected byte[] data;
-        protected bool gotPublicKey = false;
-        protected string messageReceived = "";
-        protected bool clientConnected = false;
-        protected static RSA rsa;
-        PaintForm pf;
+        protected int portNo = 500; //port number
+        protected string ipAddress = "127.0.0.1";//ip address
+        protected static TcpClient client;//tcp client
+        protected byte[] data;//conatains the transferd data
+        protected bool gotPublicKey = false; //has gotten public key from server yet
+        protected string messageReceived = "";//string of message received
+        protected bool clientConnected = false;//connection been estublished
+        protected static RSA rsa; //used for encryption and decryption
+        PaintForm pf; //used to transfer the paint form info
 
         public ParentForm()
         {
@@ -24,7 +24,7 @@ namespace HandWritingRecognitionClient
 
         }
 
-        protected void SendMessage(string message, int type)
+        protected void SendMessage(string message, int type) //send message
         {
             try
             {
@@ -42,7 +42,7 @@ namespace HandWritingRecognitionClient
             }
         }
 
-        protected void SendPublicKey(string message, int type)
+        protected void SendPublicKey(string message, int type) //sends public key
         {
             try
             {
@@ -60,12 +60,12 @@ namespace HandWritingRecognitionClient
             }
         }
 
-        protected string CreateProtocol(string msg, int type)
+        protected string CreateProtocol(string msg, int type) //creats protocol
         {
             return type + "#" + msg;
         }
 
-        protected void ReceiveMessage(IAsyncResult ar)
+        protected void ReceiveMessage(IAsyncResult ar) //receives messages
         {
             try
             {
@@ -103,7 +103,7 @@ namespace HandWritingRecognitionClient
             }
         }
 
-        protected void CreateTCPConnection()
+        protected void CreateTCPConnection()//creates connection using the tcp client object
         {
             rsa = new RSA();
             client = new TcpClient();
@@ -118,7 +118,7 @@ namespace HandWritingRecognitionClient
 
         }
 
-        private void ReadProtocol(string msg)
+        private void ReadProtocol(string msg) //used to locate the right place for the message
         {
             string[] str = msg.Split('#'); //num 1st, info 2nd
             int num = int.Parse(str[0]);
@@ -154,7 +154,7 @@ namespace HandWritingRecognitionClient
             }
         }
 
-        protected bool FieldCheck()
+        protected bool FieldCheck() //cheacks password and username length and such
         {
             return PasswordCheck() && UsernameCheck();
         }
@@ -170,13 +170,13 @@ namespace HandWritingRecognitionClient
         }
 
 
-        protected void TryToConnect(string username, string password)
+        protected void TryToConnect(string username, string password) //sends message with username and password from client
         {
             SendMessage(username + "#" + password, PaintClientProtocolType.SendDetails);
         }
 
         protected delegate void DelSuccessfullyLoggedIn();
-        protected void SuccessfullyLoggedIn()
+        protected void SuccessfullyLoggedIn() //in case of a succseful log in
         {
             this.Hide();
             pf = new PaintForm();

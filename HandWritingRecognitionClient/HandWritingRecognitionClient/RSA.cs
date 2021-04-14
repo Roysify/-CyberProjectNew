@@ -7,20 +7,20 @@ namespace HandWritingRecognitionClient
 {
     public class RSA
     {
-        private static string _privateKey;
-        private static string my_publicKey;
-        private static string other_publicKey;
-        private static UnicodeEncoding _encoder = new UnicodeEncoding();
-        private static RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+        private static string _privateKey;//The private key used for decryption.
+        private static string my_publicKey;//The public key used for the other side's encryption.
+        private static string other_publicKey;//The other side's public key used for encryption.
+        private static UnicodeEncoding _encoder = new UnicodeEncoding();//The encoder used for encoding bytes to string.
+        private static RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();//The object provides the public and private
 
-        public RSA()
+        public RSA()//The constructive function builds an object used for security measures in the project.
         {
             other_publicKey = "";
             _privateKey = rsa.ToXmlString(true);
             my_publicKey = rsa.ToXmlString(false);
 
         }
-        public string Decrypt(string data)
+        public string Decrypt(string data)// Decrypts the string
         {
             var rsa = new RSACryptoServiceProvider();
             var dataArray = data.Split(new char[] { ',' });
@@ -34,7 +34,7 @@ namespace HandWritingRecognitionClient
             var decryptedByte = rsa.Decrypt(dataByte, false);
             return _encoder.GetString(decryptedByte);
         }
-        public string Encrypt(string data)
+        public string Encrypt(string data)// encrypts the string
         {
             var rsa = new RSACryptoServiceProvider();
             rsa.FromXmlString(other_publicKey);
