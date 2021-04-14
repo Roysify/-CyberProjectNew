@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HandWritingRecognitionServer
 {
@@ -14,14 +10,12 @@ namespace HandWritingRecognitionServer
 
         static void Main(string[] args)
         {
-            //string path = "C:\\Users\\IMOE001\\Desktop\\1.jpg";
 
-            //Console.WriteLine(TesseractTextFromImage.ConvertImageToText(path));
-            //Console.ReadLine();
-
+            //creats listener based on local adress and port number
             System.Net.IPAddress localAdd = System.Net.IPAddress.Parse(ipAddress);
             TcpListener listener = new TcpListener(localAdd, portNo);
             Console.WriteLine("Listening to ip {0} port: {1}", ipAddress, portNo);
+
             // Start listen to incoming connection requests
             listener.Start();
 
@@ -31,21 +25,11 @@ namespace HandWritingRecognitionServer
                 // AcceptTcpClient - Blocking call
                 // Execute will not continue until a connection is established
 
-                // We create an instance of ChatClient so the server will be able to 
+                // We create an instance of paint Client so the server will be able to 
                 // serve multiple clients at the same time.
                 PaintClient user = new PaintClient(listener.AcceptTcpClient());
 
             }
-
-                //Server server = new Server();
-                //try
-                //{
-                //    server.();
-                //}
-                //catch (Exception e)
-                //{
-                //    Console.WriteLine(e.Message);
-                //}
 
 
         }

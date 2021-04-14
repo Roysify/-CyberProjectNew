@@ -1,9 +1,7 @@
-﻿using System;
+﻿using HandWritingRecognitionServer.Data;
+using System;
 using System.Collections;
-using System.Drawing;
-using System.IO;
 using System.Net.Sockets;
-using HandWritingRecognitionServer.Data;
 
 
 
@@ -14,7 +12,7 @@ namespace HandWritingRecognitionServer
         // Store list of all clients connecting to the server
         // the list is static so all memebers of the chat will be able to obtain list
         // of current connected client
-        public static Hashtable AllClients = new Hashtable();
+        public static Hashtable AllClients = new Hashtable(); //all clients hashtable
         // information about the client
         private TcpClient _client;
         public RSA rsa;
@@ -70,7 +68,7 @@ namespace HandWritingRecognitionServer
             {
                 Console.WriteLine(ex.ToString());
             }
-        }
+        } //sends message to client
         private void SendResult(string result)
         {
             try
@@ -85,7 +83,7 @@ namespace HandWritingRecognitionServer
                     ns = _client.GetStream();
                 }
                 // Send data to the client
-                byte[] bytesToSend = System.Text.Encoding.ASCII.GetBytes(rsa.Encrypt(ProtocolManager.CreateProtocol(result,PaintClientProtocolType.result)));
+                byte[] bytesToSend = System.Text.Encoding.ASCII.GetBytes(rsa.Encrypt(ProtocolManager.CreateProtocol(result, PaintClientProtocolType.result)));
                 ns.Write(bytesToSend, 0, bytesToSend.Length);
                 ns.Flush();
             }
@@ -94,7 +92,7 @@ namespace HandWritingRecognitionServer
                 Console.WriteLine(ex.ToString());
             }
 
-        }
+        } //sends text result to client
 
         public void SendPublicKey(string message, int type)
         {
@@ -120,7 +118,7 @@ namespace HandWritingRecognitionServer
             {
                 Console.WriteLine(ex.ToString());
             }
-        }
+        } //sends public key to client
 
         public void ReceiveMessage(IAsyncResult ar)
         {
@@ -170,7 +168,7 @@ namespace HandWritingRecognitionServer
                 Console.WriteLine(ex.ToString());
                 //AllClients.Remove(_clientIP);
             }
-        }
+        } //receives messages from client
 
         //public void Broadcast(int msgType)
         //{
@@ -182,25 +180,12 @@ namespace HandWritingRecognitionServer
         //}
 
 
-        //private void pictureAnalyze(byte[] bytes)
+        //public System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
         //{
-        //    Image img = byteArrayToImage(bytes);
-        //    string path = "C:\\Users\\IMOE001\\Desktop\\1.jpg";
-        //    System.IO.File.Delete(@path);
-        //    img.Save(path);
-        //    var input = new ModelInput();
-        //    input.ImageSource = path;
-        //    ModelOutput result = ConsumeModel.Predict(input);
-        //    Console.WriteLine(result.Prediction);
-
+        //    MemoryStream ms = new MemoryStream(byteArrayIn);
+        //    System.Drawing.Image returnImage = Image.FromStream(ms);
+        //    return returnImage;
         //}
-
-        public System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            System.Drawing.Image returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
     }
 
 }

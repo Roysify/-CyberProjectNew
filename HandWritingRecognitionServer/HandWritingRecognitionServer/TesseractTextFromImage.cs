@@ -16,7 +16,7 @@ namespace HandWritingRecognitionServer
 
                 return plainText;
             }
-        }
+        }// converts image to text
         private static Bitmap ToImage(byte[] imageData)
         {
             Bitmap bmp;
@@ -25,7 +25,7 @@ namespace HandWritingRecognitionServer
                 bmp = new Bitmap(ms);
             }
             return bmp;
-        }
+        } //converts byte[] to bitmap image
 
     }
 }

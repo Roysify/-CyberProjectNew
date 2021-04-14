@@ -10,8 +10,8 @@ namespace HandWritingRecognitionServer
 
     public static class DataBaseManager
     {
-        
-        public static bool IsUserExists(string username, string password,PaintClient pc)
+        //managing the methods that are used to get and transport info to the database
+        public static bool IsUserExists(string username, string password, PaintClient pc)
         {
             string dbPath = "DB.mdf";
             DAL dal = new DAL(dbPath);
@@ -30,7 +30,7 @@ namespace HandWritingRecognitionServer
                 Console.WriteLine("user " + username + " is invalid");
             }
             return exists;
-        }
+        }// checks if user exists
 
         public static bool IsUsernameExists(string username, PaintClient pc)
         {
@@ -51,7 +51,7 @@ namespace HandWritingRecognitionServer
                 Console.WriteLine(username + " is used");
                 return false;
             }
-        }
+        } //checks if username exists
 
         public static bool AddUser(string Username, string Password, PaintClient pc)
         {
@@ -67,7 +67,7 @@ namespace HandWritingRecognitionServer
                 return n == 1;
             }
             return false;
-        }
+        }//adds user to database
 
     }
 }

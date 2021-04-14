@@ -2,6 +2,7 @@
 {
     public class PaintClientProtocolType
     {
+        //agreed consts serving as message types
         public const int ErvrorInvalidPasswordAndUsername = 0;
         public const int OkValidPasswordAndUsername = 1;
         public const int SendDetails = 2;

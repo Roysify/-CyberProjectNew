@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HandWritingRecognitionServer
 {
-    class Server
+    class Server //unused class
     {
         public static Hashtable AllClients = new Hashtable();
         // information about the client
@@ -20,9 +20,6 @@ namespace HandWritingRecognitionServer
         // used for sending and reciving data
         private byte[] data;
 
-        bool connected;
-        string messageReceived = "";
-        bool pictureIsSent = false;
 
         public Server()
         {
