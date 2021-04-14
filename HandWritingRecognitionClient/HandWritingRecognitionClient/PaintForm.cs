@@ -35,7 +35,7 @@ namespace HandWritingRecognitionClient
 
         private void button2_Click(object sender, EventArgs e)//send picture button press
         {
-            SendMessage("f", PaintClientProtocolType.SendPicture);
+            SendMessage("picture", PaintClientProtocolType.SendPicture);
             Thread.Sleep(1000);
             SendPicture(ImageToByteArray(pictureBox1.Image));
 

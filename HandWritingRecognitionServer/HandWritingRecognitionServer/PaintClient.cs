@@ -130,34 +130,10 @@ namespace HandWritingRecognitionServer
                     // call EndRead to handle the end of an async read.
                     bytesRead = _client.GetStream().EndRead(ar);
                 }
-                // if bytesread<1 -> the client disconnected
-                if (bytesRead < 1)
-                {
-                    // remove the client from out list of clients
-                    AllClients.Remove(_clientIP);
-                    // tell everyone the client left the chat.
-                    return;
-                }
-                else // client still connected
-                {
-                    if (!got_Public_key)
-                    {
-                        messageReceived = System.Text.Encoding.ASCII.GetString(data, 0, bytesRead);
-                    }
-                    else if (pictureIsSent)
-                    {
-                        pictureIsSent = false;
-                        SendResult(TesseractTextFromImage.ConvertImageToText(data));
-                    }
-                    else
-                    {
-                        messageReceived = rsa.Decrypt(System.Text.Encoding.ASCII.GetString(data, 0, bytesRead));
-                        Console.WriteLine(messageReceived);
 
-                    }
-                    // if the client is sending its nickname
-                    ProtocolManager.ReadProtocol(messageReceived, this);
-                }
+                //respond with the right action based on boolians
+                MsgOrder(bytesRead);   
+
                 lock (_client.GetStream())
                 {
                     // continue reading form the client
@@ -170,6 +146,30 @@ namespace HandWritingRecognitionServer
                 //AllClients.Remove(_clientIP);
             }
         } //receives messages from client
+
+        private void MsgOrder(int bytesRead)
+        {
+            if (!got_Public_key)
+            {
+                messageReceived = System.Text.Encoding.ASCII.GetString(data, 0, bytesRead);
+                // transfer msg string to protocol manager
+                ProtocolManager.ReadProtocol(messageReceived, this);
+
+            }
+            else if (pictureIsSent)
+            {
+                pictureIsSent = false;
+                SendResult(TesseractTextFromImage.ConvertImageToText(data));
+            }
+            else
+            {
+                messageReceived = rsa.Decrypt(System.Text.Encoding.ASCII.GetString(data, 0, bytesRead));
+                Console.WriteLine(messageReceived);
+                // transfer msg string to protocol manager
+                ProtocolManager.ReadProtocol(messageReceived, this);
+            }
+
+        }
 
         //public void Broadcast(int msgType)
         //{
