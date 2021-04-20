@@ -39,11 +39,11 @@ namespace HandWritingRecognitionClient
             // 
             // Password_Box
             // 
-            this.Password_Box.Text = "";
+            this.Password_Box.Text = "123456";
             // 
             // Username_Box
             // 
-            this.Username_Box.Text = "";
+            this.Username_Box.Text = "123456";
             // 
             // label1
             // 
@@ -59,6 +59,7 @@ namespace HandWritingRecognitionClient
             this.Confirm_Box.PasswordChar = '*';
             this.Confirm_Box.Size = new System.Drawing.Size(114, 20);
             this.Confirm_Box.TabIndex = 12;
+            this.Confirm_Box.Text = "123456";
             // 
             // label4
             // 
@@ -110,6 +111,7 @@ namespace HandWritingRecognitionClient
             this.EmailBox.Name = "EmailBox";
             this.EmailBox.Size = new System.Drawing.Size(140, 20);
             this.EmailBox.TabIndex = 15;
+            this.EmailBox.Text = "123456123";
             // 
             // label5
             // 

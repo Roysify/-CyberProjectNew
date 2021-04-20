@@ -53,19 +53,20 @@ namespace HandWritingRecognitionServer
             }
         } //checks if username exists
 
-        public static bool AddUser(string Username, string Password, PaintClient pc)
+        public static bool AddUser(string username, string password, string email, PaintClient pc)
         {
             string dbPath = "DB.mdf";
             DAL dal = new DAL(dbPath);
-            string selectSql = "select * from users where Username ='" + Username + "'";
+            string selectSql = "select * from users where Username ='" + username + "'";
             DataTable dt = dal.GetDataTable(selectSql);
             if (dt.Rows.Count == 0)
             {
-                string insertSql = "INSERT INTO users (Username,Password,admin) VALUES('" + Username + "','" + Password + "','no')";
+                string insertSql = "INSERT INTO users (Username,Password,Email,Admin) VALUES('" + username + "','" + password + "','" + email + "',+'no')";
                 int n = dal.UpdateDB(insertSql);
                 pc.SendMessage(PaintClientProtocolType.UserAdded);
                 return n == 1;
             }
+            pc.SendMessage(PaintClientProtocolType.UsernameUnavailable);
             return false;
         }//adds user to database
 

@@ -24,9 +24,10 @@ namespace HandWritingRecognitionClient
                     if (!first) //בדיקה ראשונה שבה נוצר הקליינט
                     {
                         CreateTCPConnection();
+                        first = true;
                     }
                     else
-                        IsUsernameExists(Username_Box.Text);
+                        Register(Username_Box.Text, Password_Box.Text, EmailBox.Text);
 
 
                 }
@@ -41,9 +42,9 @@ namespace HandWritingRecognitionClient
 
         }
 
-        private void IsUsernameExists(string user)
+        private void Register(string user, string password, string email)
         {
-            SendMessage(user, PaintClientProtocolType.SendUsername);
+            SendMessage(user + "#" + password + "#" + email, PaintClientProtocolType.Register);
         }//sends message to the server with username from user
 
         private void Back_BTN_Click(object sender, EventArgs e)
@@ -58,5 +59,6 @@ namespace HandWritingRecognitionClient
         {
             Application.Exit();
         }
+
     }
 }

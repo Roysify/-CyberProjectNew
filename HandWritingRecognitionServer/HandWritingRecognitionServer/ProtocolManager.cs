@@ -9,7 +9,7 @@ namespace HandWritingRecognitionServer
         //managing the agreed language between the client and the server
         public static void ReadProtocol(string msg, PaintClient pc)
         {
-            string[] str = msg.Split('#'); //splits the string into an array: num 1st, info 2nd
+            string[] str = msg.Split('#'); //splits the string into an array: num 1st, info 2nd...
             int num = int.Parse(str[0]); //getting the number which states about the content of the msg
             try
             {
@@ -35,11 +35,8 @@ namespace HandWritingRecognitionServer
                     case PaintClientProtocolType.SendPicture: //In picture Is about to be sent
                         pc.pictureIsSent = true;
                         break;
-                    case PaintClientProtocolType.SendUsername: //In client sends username
-                        if (DataBaseManager.IsUsernameExists(str[1], pc))
-                        {
-                            DataBaseManager.AddUser(str[1], str[2], pc); //1 - username, 2 - password
-                        }
+                    case PaintClientProtocolType.Register: //In client sends username
+                        DataBaseManager.AddUser(str[1], str[2], str[3], pc); //1 - username, 2 - password 3 -email
                         break;
                     default:
 

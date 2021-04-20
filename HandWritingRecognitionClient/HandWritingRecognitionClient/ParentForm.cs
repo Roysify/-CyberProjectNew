@@ -132,13 +132,12 @@ namespace HandWritingRecognitionClient
             switch (num)
             {
                 case PaintClientProtocolType.ErvrorInvalidPasswordAndUsername:
-                    this.Invoke(new IncorrectDetails(SetsignedInVisibleMode), true);
+                    MessageBox.Show("Incorrect details");
                     break;
 
                 case PaintClientProtocolType.OkValidPasswordAndUsername:
 
                     this.Invoke(new DelSuccessfullyLoggedIn(SuccessfullyLoggedIn));
-                    this.Invoke(new IncorrectDetails(SetsignedInVisibleMode), false);
                     break;
 
                 case PaintClientProtocolType.SendPublicKey:
@@ -153,6 +152,13 @@ namespace HandWritingRecognitionClient
                 case PaintClientProtocolType.Result:
                     pf.GotAResult(str[1]);
                     break;
+                case PaintClientProtocolType.UsernameUnavailable:
+                    MessageBox.Show("Username is unavailable. Try something else.");
+                    break;
+                case PaintClientProtocolType.UserAdded:
+                    SuccessfullyRegistered();
+                    break;
+
                 default:
 
                     break;
@@ -191,11 +197,13 @@ namespace HandWritingRecognitionClient
 
         }
 
-        protected delegate void IncorrectDetails(bool visible_mode);
-        protected void SetsignedInVisibleMode(bool visible_mode)
+        private void SuccessfullyRegistered()
         {
-            //user_and_pass_inc.Visible = visible_mode;
+            this.Hide();
+            pf = new PaintForm();
+            pf.Show();
         }
+
 
     }
 }

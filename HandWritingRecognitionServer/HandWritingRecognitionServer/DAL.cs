@@ -7,7 +7,7 @@ namespace HandWritingRecognitionServer
     {
         private string dbPath; //data base location
         private string ConnectionString; //string used to create connection
-        private string connectionStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\IMOE001\Documents\DB.mdf;Integrated Security=True";
+        private string connectionStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\IMOE001\Documents\‏‏CyberProjectNew\DB.mdf;Integrated Security=True";
         private SqlConnection sqlConnection;
         private SqlCommand command;
         private SqlDataAdapter adapter;

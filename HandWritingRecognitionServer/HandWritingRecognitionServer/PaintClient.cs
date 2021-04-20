@@ -20,8 +20,6 @@ namespace HandWritingRecognitionServer
         // used for sending and reciving data
         private byte[] data;
 
-        bool connected;
-        private string _ClientNick;
 
         public bool got_Public_key = false;
         string messageReceived = "";
