@@ -16,7 +16,7 @@
         public const int Result = 10;
         public const int SendEmail = 11;
         public const int UsernameUnavailable = 12;
-
+        public const int SendPassword = 13;
 
     }
 }

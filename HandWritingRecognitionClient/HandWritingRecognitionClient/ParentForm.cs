@@ -16,7 +16,7 @@ namespace HandWritingRecognitionClient
         protected string messageReceived = "";//string of message received
         protected bool clientConnected = false;//connection been estublished
         protected static RSA rsa; //used for encryption and decryption
-        PaintForm pf; //used to transfer the paint form info
+        PaintForm pf; //used to transfer the paint form requierd info
 
         public ParentForm()
         {
@@ -24,7 +24,15 @@ namespace HandWritingRecognitionClient
 
         }
 
-        protected void SendMessage(string message, int type) //send message
+        protected void SendMessage(string message, int type) 
+           /*
+                Sends message from client to server
+               Arguments:
+                   message (string) - message content
+                   type (int) - type of message
+                Return:
+                   void
+                */
         {
             try
             {
@@ -143,7 +151,6 @@ namespace HandWritingRecognitionClient
                 case PaintClientProtocolType.SendPublicKey:
                     rsa.setOtherPublicKey(str[1]);
                     gotPublicKey = true;
-                    TryToConnect(Username_Box.Text, Password_Box.Text);
                     break;
 
                 case PaintClientProtocolType.SendMessage:
@@ -156,7 +163,8 @@ namespace HandWritingRecognitionClient
                     MessageBox.Show("Username is unavailable. Try something else.");
                     break;
                 case PaintClientProtocolType.UserAdded:
-                    SuccessfullyRegistered();
+                    MessageBox.Show("Registered");
+                    this.Invoke(new DelSuccessfullyRegistered(SuccessfullyRegistered));
                     break;
 
                 default:
@@ -197,6 +205,7 @@ namespace HandWritingRecognitionClient
 
         }
 
+        protected delegate void DelSuccessfullyRegistered();
         private void SuccessfullyRegistered()
         {
             this.Hide();
@@ -204,6 +213,9 @@ namespace HandWritingRecognitionClient
             pf.Show();
         }
 
-
+        protected void SendPassword(string password)
+        {
+            SendMessage(password, PaintClientProtocolType.SendPassword);
+        }
     }
 }

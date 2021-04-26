@@ -108,9 +108,9 @@ namespace HandWritingRecognitionClient
                     {//we need to create a Graphics object to draw on the picture box, its our main tool
 
                         //when making a Pen object, you can just give it color only or give it color and pen size
-
+                        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                         g.DrawLine(new Pen(Color.Black, 2), lastPoint, e.Location);
-                        g.SmoothingMode = SmoothingMode.AntiAlias;
+                        //g.SmoothingMode = SmoothingMode.AntiAlias;
                         //this is to give the drawing a more smoother, less sharper look
 
                     }

@@ -1,5 +1,6 @@
 ﻿using HandWritingRecognitionClient.Data;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -24,7 +25,9 @@ namespace HandWritingRecognitionClient
                     if (!first) //בדיקה ראשונה שבה נוצר הקליינט
                     {
                         CreateTCPConnection();
+                        Thread.Sleep(400);
                         first = true;
+                        Register(Username_Box.Text, Password_Box.Text, EmailBox.Text);
                     }
                     else
                         Register(Username_Box.Text, Password_Box.Text, EmailBox.Text);

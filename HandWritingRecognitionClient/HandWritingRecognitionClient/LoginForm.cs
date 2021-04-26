@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -21,6 +22,8 @@ namespace HandWritingRecognitionClient
                     if (!clientConnected)
                     {
                         CreateTCPConnection();
+                        Thread.Sleep(400);
+                        TryToConnect(Username_Box.Text, Password_Box.Text);
                     }
                     else
                     {

@@ -27,7 +27,7 @@ namespace HandWritingRecognitionServer
 
                 // We create an instance of paint Client so the server will be able to 
                 // serve multiple clients at the same time.
-                PaintClient user = new PaintClient(listener.AcceptTcpClient());
+               PaintClient user = new PaintClient(listener.AcceptTcpClient());
 
             }
 
