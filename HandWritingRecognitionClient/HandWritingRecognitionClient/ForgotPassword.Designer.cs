@@ -40,28 +40,33 @@ namespace HandWritingRecognitionClient
             // 
             // Password_Box
             // 
-            this.Password_Box.Location = new System.Drawing.Point(441, 147);
+            this.Password_Box.Location = new System.Drawing.Point(662, 226);
+            this.Password_Box.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.Password_Box.Visible = false;
             // 
             // Username_Box
             // 
-            this.Username_Box.Location = new System.Drawing.Point(441, 97);
+            this.Username_Box.Location = new System.Drawing.Point(662, 149);
+            this.Username_Box.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.Username_Box.Visible = false;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(341, 145);
+            this.label3.Location = new System.Drawing.Point(512, 223);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Visible = false;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(341, 96);
+            this.label2.Location = new System.Drawing.Point(512, 148);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Visible = false;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(196, 9);
-            this.label1.Size = new System.Drawing.Size(160, 27);
+            this.label1.Location = new System.Drawing.Point(294, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Size = new System.Drawing.Size(244, 41);
             this.label1.Text = "Forgot Password";
             // 
             // Submit_Btn
@@ -70,10 +75,10 @@ namespace HandWritingRecognitionClient
             this.Submit_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Submit_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Submit_Btn.ForeColor = System.Drawing.Color.White;
-            this.Submit_Btn.Location = new System.Drawing.Point(15, 289);
-            this.Submit_Btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Submit_Btn.Location = new System.Drawing.Point(22, 445);
+            this.Submit_Btn.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Submit_Btn.Name = "Submit_Btn";
-            this.Submit_Btn.Size = new System.Drawing.Size(73, 27);
+            this.Submit_Btn.Size = new System.Drawing.Size(110, 42);
             this.Submit_Btn.TabIndex = 17;
             this.Submit_Btn.Text = "Submit";
             this.Submit_Btn.UseVisualStyleBackColor = false;
@@ -85,10 +90,10 @@ namespace HandWritingRecognitionClient
             this.Send_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Send_BTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Send_BTN.ForeColor = System.Drawing.Color.White;
-            this.Send_BTN.Location = new System.Drawing.Point(15, 146);
-            this.Send_BTN.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Send_BTN.Location = new System.Drawing.Point(22, 225);
+            this.Send_BTN.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Send_BTN.Name = "Send_BTN";
-            this.Send_BTN.Size = new System.Drawing.Size(73, 27);
+            this.Send_BTN.Size = new System.Drawing.Size(110, 42);
             this.Send_BTN.TabIndex = 16;
             this.Send_BTN.Text = "Send";
             this.Send_BTN.UseVisualStyleBackColor = false;
@@ -96,30 +101,29 @@ namespace HandWritingRecognitionClient
             // 
             // Code_Box
             // 
-            this.Code_Box.Location = new System.Drawing.Point(111, 236);
-            this.Code_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Code_Box.Location = new System.Drawing.Point(166, 363);
+            this.Code_Box.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Code_Box.Name = "Code_Box";
-            this.Code_Box.PasswordChar = '*';
-            this.Code_Box.Size = new System.Drawing.Size(114, 20);
+            this.Code_Box.Size = new System.Drawing.Size(169, 26);
             this.Code_Box.TabIndex = 15;
             // 
             // Email_Box
             // 
-            this.Email_Box.Location = new System.Drawing.Point(111, 96);
-            this.Email_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Email_Box.Location = new System.Drawing.Point(166, 148);
+            this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Email_Box.Name = "Email_Box";
-            this.Email_Box.Size = new System.Drawing.Size(114, 20);
+            this.Email_Box.Size = new System.Drawing.Size(169, 26);
             this.Email_Box.TabIndex = 14;
+            this.Email_Box.Text = "roy.malshin@gmail.com";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label4.Location = new System.Drawing.Point(11, 233);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(16, 358);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 20);
+            this.label4.Size = new System.Drawing.Size(62, 29);
             this.label4.TabIndex = 13;
             this.label4.Text = "Code";
             // 
@@ -128,10 +132,9 @@ namespace HandWritingRecognitionClient
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label5.Location = new System.Drawing.Point(11, 94);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(16, 145);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 20);
+            this.label5.Size = new System.Drawing.Size(66, 29);
             this.label5.TabIndex = 12;
             this.label5.Text = "Email";
             // 
@@ -141,10 +144,10 @@ namespace HandWritingRecognitionClient
             this.Back_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Back_BTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Back_BTN.ForeColor = System.Drawing.Color.White;
-            this.Back_BTN.Location = new System.Drawing.Point(505, 322);
-            this.Back_BTN.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Back_BTN.Location = new System.Drawing.Point(758, 495);
+            this.Back_BTN.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Back_BTN.Name = "Back_BTN";
-            this.Back_BTN.Size = new System.Drawing.Size(68, 27);
+            this.Back_BTN.Size = new System.Drawing.Size(102, 42);
             this.Back_BTN.TabIndex = 18;
             this.Back_BTN.Text = "Back";
             this.Back_BTN.UseVisualStyleBackColor = false;
@@ -152,8 +155,8 @@ namespace HandWritingRecognitionClient
             // 
             // ForgotPassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.ClientSize = new System.Drawing.Size(876, 555);
             this.Controls.Add(this.Back_BTN);
             this.Controls.Add(this.Submit_Btn);
             this.Controls.Add(this.Send_BTN);
@@ -161,6 +164,7 @@ namespace HandWritingRecognitionClient
             this.Controls.Add(this.Email_Box);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "ForgotPassword";
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);

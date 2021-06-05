@@ -71,32 +71,31 @@ namespace HandWritingRecognitionClient
 
         public static void SendCode()
         {
-            string from, pass, messageBody;
-            Random rnd = new Random();
-            randomCode = rnd.Next(100000, 999999).ToString();
-            MailMessage message = new MailMessage();
-            from = "csemailsndr@gmail.com";
-            pass = "tsntest123";
-            messageBody = "your reset code is " + randomCode;
-            message.To.Add(userEmail);
-            message.From = new MailAddress(from);
-            message.Body = messageBody;
-            message.Subject = "password reseting code";
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-            smtp.EnableSsl = true;
-            smtp.Port = 587;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.Credentials = new NetworkCredential(from, pass);
             try
             {
-                smtp.Send(message);
-                MessageBox.Show("code was sent");
-
+                MailMessage mm = new MailMessage("cyberprojectph@gmail.com", userEmail);
+                mm.Subject = "Password Recovery";
+                Random rnd = new Random();
+                randomCode = rnd.Next(100000, 999999).ToString();
+                mm.Body = string.Format($"Random code: {randomCode}");
+                mm.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                NetworkCredential NetworkCred = new NetworkCredential();
+                NetworkCred.UserName = "cyberprojectph@gmail.com";
+                NetworkCred.Password = "cyberp12345";
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = NetworkCred;
+                smtp.Port = 587;
+                smtp.Send(mm);
+                MessageBox.Show("Confirmation code was sent to your email");
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(e.Message);
             }
+
         }
 
         private void Submit_Btn_Click(object sender, EventArgs e)

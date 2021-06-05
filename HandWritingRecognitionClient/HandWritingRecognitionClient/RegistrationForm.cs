@@ -41,7 +41,7 @@ namespace HandWritingRecognitionClient
 
             }
             else
-                MessageBox.Show("username already exists");
+                MessageBox.Show("details are unavailable");
 
         }
 
@@ -53,7 +53,7 @@ namespace HandWritingRecognitionClient
         private void Back_BTN_Click(object sender, EventArgs e)
         {
 
-        }//return to log in form
+        }//return to login form
 
         private void RegistrationForm_FormClosed(object sender, FormClosedEventArgs e)//window closed
         {

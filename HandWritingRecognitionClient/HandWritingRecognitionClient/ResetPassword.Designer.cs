@@ -34,23 +34,29 @@ namespace HandWritingRecognitionClient
             // 
             // Password_Box
             // 
-            this.Password_Box.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.Password_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             // 
             // Username_Box
             // 
-            this.Username_Box.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.Username_Box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Username_Box.PasswordChar = '*';
             // 
             // label3
             // 
-            this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label3.Size = new System.Drawing.Size(73, 40);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Size = new System.Drawing.Size(107, 58);
             this.label3.Text = "Confirm\r\nPassword";
             // 
             // label2
             // 
-            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Size = new System.Drawing.Size(107, 29);
             this.label2.Text = "Password";
+            // 
+            // label1
+            // 
+            this.label1.Size = new System.Drawing.Size(261, 41);
+            this.label1.Text = "Change Password";
             // 
             // Send_BTN
             // 
@@ -58,10 +64,10 @@ namespace HandWritingRecognitionClient
             this.Send_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Send_BTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Send_BTN.ForeColor = System.Drawing.Color.White;
-            this.Send_BTN.Location = new System.Drawing.Point(113, 211);
-            this.Send_BTN.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Send_BTN.Location = new System.Drawing.Point(170, 325);
+            this.Send_BTN.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Send_BTN.Name = "Send_BTN";
-            this.Send_BTN.Size = new System.Drawing.Size(73, 27);
+            this.Send_BTN.Size = new System.Drawing.Size(110, 42);
             this.Send_BTN.TabIndex = 17;
             this.Send_BTN.Text = "Send";
             this.Send_BTN.UseVisualStyleBackColor = false;
@@ -69,10 +75,10 @@ namespace HandWritingRecognitionClient
             // 
             // ResetPassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.ClientSize = new System.Drawing.Size(876, 555);
             this.Controls.Add(this.Send_BTN);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "ResetPassword";
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);

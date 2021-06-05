@@ -15,7 +15,7 @@
         public const int UserAdded = 9;
         public const int Result = 10;
         public const int SendEmail = 11;
-        public const int UsernameUnavailable = 12;
+        public const int UsernameOrEmailUnavailable = 12;
         public const int SendPassword = 13;
         public const int PasswordChanged = 14;
         public const int EmailExists = 15;

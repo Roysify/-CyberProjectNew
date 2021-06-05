@@ -5,9 +5,6 @@ using System.Data;
 
 namespace HandWritingRecognitionServer
 {
-
-
-
     public static class DataBaseManager
     {
         //managing the methods that are used to get and transport info to the database
@@ -57,7 +54,7 @@ namespace HandWritingRecognitionServer
         {
             string dbPath = "DB.mdf";
             DAL dal = new DAL(dbPath);
-            string selectSql = "select * from users where Username ='" + username + "'";
+            string selectSql = "select * from users where Username ='" + username + "'and Email = '" + email + "'";
             DataTable dt = dal.GetDataTable(selectSql);
             if (dt.Rows.Count == 0)
             {
@@ -66,7 +63,7 @@ namespace HandWritingRecognitionServer
                 pc.SendMessage(PaintClientProtocolType.UserAdded);
                 return n == 1;
             }
-            pc.SendMessage(PaintClientProtocolType.UsernameUnavailable);
+            pc.SendMessage(PaintClientProtocolType.UsernameOrEmailUnavailable);
             return false;
         }//adds user to database
 
@@ -77,7 +74,7 @@ namespace HandWritingRecognitionServer
             string updateSql = "update users set password = '"+ newPassword+"' where Email ='" + email + "'";
             dal.UpdateDB(updateSql);
             pc.SendMessage(PaintClientProtocolType.PasswordChanged);
-        }
+        }//changes the password based on email
 
         public static void CheckEmail(string email,PaintClient pc)
         {
@@ -98,6 +95,6 @@ namespace HandWritingRecognitionServer
                 Console.WriteLine("email: " + email + " is invalid");
             }
 
-        }
+        }//checks if email exists
     }
 }

@@ -59,6 +59,7 @@ namespace HandWritingRecognitionServer
             }
         }
 
+        //used to add connect between strings
         public static string CreateProtocol(string msg, int type)
         {
             return type + "#" + msg; //adds the protocl type to the msg and divides with #

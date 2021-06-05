@@ -159,8 +159,8 @@ namespace HandWritingRecognitionClient
                 case PaintClientProtocolType.Result:
                     pf.GotAResult(str[1]);
                     break;
-                case PaintClientProtocolType.UsernameUnavailable:
-                    MessageBox.Show("Username is unavailable. Try something else.");
+                case PaintClientProtocolType.UsernameOrEmailUnavailable:
+                    MessageBox.Show("Username or email are unavailable. Try something else.");
                     break;
                 case PaintClientProtocolType.UserAdded:
                     MessageBox.Show("Registered");
