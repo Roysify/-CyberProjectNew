@@ -70,5 +70,34 @@ namespace HandWritingRecognitionServer
             return false;
         }//adds user to database
 
+        public static void ChangePassword(string newPassword, string email,PaintClient pc)
+        {
+            string dbPath = "DB.mdf";
+            DAL dal = new DAL(dbPath);
+            string updateSql = "update users set password = '"+ newPassword+"' where Email ='" + email + "'";
+            dal.UpdateDB(updateSql);
+            pc.SendMessage(PaintClientProtocolType.PasswordChanged);
+        }
+
+        public static void CheckEmail(string email,PaintClient pc)
+        {
+            string dbPath = "DB.mdf";
+            DAL dal = new DAL(dbPath);
+            string selectSql = "select * from Users where Email ='" + email + "'";
+            DataTable dt = dal.GetDataTable(selectSql);
+            bool exists = dt.Rows.Count == 1;
+
+            if (exists)
+            {
+                pc.SendMessage(PaintClientProtocolType.EmailExists);
+                Console.WriteLine("email: " + email + " exists");
+            }
+            else
+            {
+                pc.SendMessage(PaintClientProtocolType.EmailInvalid);
+                Console.WriteLine("email: " + email + " is invalid");
+            }
+
+        }
     }
 }

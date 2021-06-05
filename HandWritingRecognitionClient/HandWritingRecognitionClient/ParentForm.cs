@@ -24,15 +24,15 @@ namespace HandWritingRecognitionClient
 
         }
 
-        protected void SendMessage(string message, int type) 
-           /*
-                Sends message from client to server
-               Arguments:
-                   message (string) - message content
-                   type (int) - type of message
-                Return:
-                   void
-                */
+        protected void SendMessage(string message, int type)
+        /*
+             Sends message from client to server
+            Arguments:
+                message (string) - message content
+                type (int) - type of message
+             Return:
+                void
+        */
         {
             try
             {
@@ -166,6 +166,13 @@ namespace HandWritingRecognitionClient
                     MessageBox.Show("Registered");
                     this.Invoke(new DelSuccessfullyRegistered(SuccessfullyRegistered));
                     break;
+                case PaintClientProtocolType.PasswordChanged:
+                    MessageBox.Show("Password Changed");
+                    this.Invoke(new DelSuccessfullyRegistered(SuccessfullyRegistered));
+                    break;
+                case PaintClientProtocolType.EmailExists:
+                    this.Invoke(new DelEmailExists(EmailExists));
+                    break;
 
                 default:
 
@@ -213,9 +220,16 @@ namespace HandWritingRecognitionClient
             pf.Show();
         }
 
-        protected void SendPassword(string password)
+        protected delegate void DelEmailExists();
+        private void EmailExists()
         {
-            SendMessage(password, PaintClientProtocolType.SendPassword);
+            ForgotPassword.SendCode();
+        }
+
+
+        protected void RenewPassword(string password,string email)
+        {
+            SendMessage(password+'#'+email, PaintClientProtocolType.SendPassword);
         }
     }
 }

@@ -62,5 +62,6 @@ namespace HandWritingRecognitionClient
             ForgotPassword fp = new ForgotPassword();
             fp.Show();
         }
+
     }
 }

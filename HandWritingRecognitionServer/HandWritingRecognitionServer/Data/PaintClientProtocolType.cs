@@ -17,6 +17,8 @@
         public const int SendEmail = 11;
         public const int UsernameUnavailable = 12;
         public const int SendPassword = 13;
-
+        public const int PasswordChanged = 14;
+        public const int EmailExists = 15;
+        public const int EmailInvalid = 16;
     }
 }

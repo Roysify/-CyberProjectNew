@@ -52,9 +52,6 @@ namespace HandWritingRecognitionClient
 
         private void Back_BTN_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            LoginForm clientLogin = new LoginForm();
-            clientLogin.Show();
 
         }//return to log in form
 
@@ -63,5 +60,11 @@ namespace HandWritingRecognitionClient
             Application.Exit();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm clientLogin = new LoginForm();
+            clientLogin.Show();
+        }
     }
 }

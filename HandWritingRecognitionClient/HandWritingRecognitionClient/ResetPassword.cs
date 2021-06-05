@@ -12,8 +12,11 @@ namespace HandWritingRecognitionClient
     public partial class ResetPassword : HandWritingRecognitionClient.ParentForm
     {
         bool first = false;
-        public ResetPassword()
+        string email;//email from user
+
+        public ResetPassword(string email)
         {
+            this.email = email;
             InitializeComponent();
         }
 
@@ -28,10 +31,10 @@ namespace HandWritingRecognitionClient
                         CreateTCPConnection();
                         Thread.Sleep(800);
                         first = true;
-                        SendPassword(Password_Box.Text);
+                        RenewPassword(Password_Box.Text,email);
                     }
                     else
-                        SendPassword(Password_Box.Text);
+                        RenewPassword(Password_Box.Text,email);
 
 
                 }

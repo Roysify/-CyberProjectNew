@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
@@ -136,5 +137,33 @@ namespace HandWritingRecognitionClient
             ResultTxtBox.Text = result;
         }
 
+        private void Back_BTN_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm pf = new LoginForm();
+            pf.Show();
+        }
+
+        private void UploadBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|Tiff Image (.tiff)|*.tiff|Wmf Image (.wmf)|*.wmf";
+            try
+            {
+                of.ShowDialog();
+                var path = of.FileName;
+
+                Bitmap bitmap = (Bitmap)Image.FromFile(path);
+                Bitmap newBitmap = new Bitmap(bitmap);
+                newBitmap.SetResolution(pictureBox1.Width, pictureBox1.Height);
+                newBitmap.Save("file300.jpg", ImageFormat.Jpeg);
+                pictureBox1.Image = newBitmap;
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
     }
 }

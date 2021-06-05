@@ -35,6 +35,7 @@ namespace HandWritingRecognitionClient
             this.Email_Box = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.Back_BTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Password_Box
@@ -134,10 +135,26 @@ namespace HandWritingRecognitionClient
             this.label5.TabIndex = 12;
             this.label5.Text = "Email";
             // 
+            // Back_BTN
+            // 
+            this.Back_BTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Back_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Back_BTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Back_BTN.ForeColor = System.Drawing.Color.White;
+            this.Back_BTN.Location = new System.Drawing.Point(505, 322);
+            this.Back_BTN.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Back_BTN.Name = "Back_BTN";
+            this.Back_BTN.Size = new System.Drawing.Size(68, 27);
+            this.Back_BTN.TabIndex = 18;
+            this.Back_BTN.Text = "Back";
+            this.Back_BTN.UseVisualStyleBackColor = false;
+            this.Back_BTN.Click += new System.EventHandler(this.Back_BTN_Click);
+            // 
             // ForgotPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.Back_BTN);
             this.Controls.Add(this.Submit_Btn);
             this.Controls.Add(this.Send_BTN);
             this.Controls.Add(this.Code_Box);
@@ -156,6 +173,7 @@ namespace HandWritingRecognitionClient
             this.Controls.SetChildIndex(this.Code_Box, 0);
             this.Controls.SetChildIndex(this.Send_BTN, 0);
             this.Controls.SetChildIndex(this.Submit_Btn, 0);
+            this.Controls.SetChildIndex(this.Back_BTN, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +187,6 @@ namespace HandWritingRecognitionClient
         private System.Windows.Forms.TextBox Email_Box;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button Back_BTN;
     }
 }

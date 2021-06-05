@@ -92,14 +92,14 @@ namespace HandWritingRecognitionClient
             this.Controls.Add(this.Registration_Btn);
             this.Controls.Add(this.label5);
             this.Name = "LoginForm";
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.Registration_Btn, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.Username_Box, 0);
             this.Controls.SetChildIndex(this.Password_Box, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.label5, 0);
-            this.Controls.SetChildIndex(this.Registration_Btn, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

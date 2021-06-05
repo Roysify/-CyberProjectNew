@@ -105,6 +105,7 @@ namespace HandWritingRecognitionClient
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "ParentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HandWritingRecognitionClient";
             this.ResumeLayout(false);
             this.PerformLayout();

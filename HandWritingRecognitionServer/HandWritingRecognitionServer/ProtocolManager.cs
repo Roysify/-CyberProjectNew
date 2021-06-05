@@ -23,7 +23,7 @@ namespace HandWritingRecognitionServer
                         //connected = true; //user logged in
                         break;
 
-                    case PaintClientProtocolType.SendPublicKey: //In case a public key was received
+                    case PaintClientProtocolType.SendPublicKey: //In case public key was received
                         Console.WriteLine("public key was recieved");
                         pc.rsa.setOtherPublicKey(str[1]); //get other public key
                         pc.SendPublicKey(pc.rsa.GetPublicKey(), PaintClientProtocolType.SendPublicKey);
@@ -32,12 +32,19 @@ namespace HandWritingRecognitionServer
                     case PaintClientProtocolType.SendMessage:
                         //Broadcast(_ClientNick + "> " + str[1]);
                         break;
-                    case PaintClientProtocolType.SendPicture: //In picture Is about to be sent
+                    case PaintClientProtocolType.SendPicture: //In case picture Is about to be sent
                         pc.pictureIsSent = true;
                         break;
-                    case PaintClientProtocolType.Register: //In client sends username
+                    case PaintClientProtocolType.Register: //In case client sends username
                         DataBaseManager.AddUser(str[1], str[2], str[3], pc); //1 - username, 2 - password 3 -email
                         break;
+                    case PaintClientProtocolType.SendPassword: //In case client sends password
+                        DataBaseManager.ChangePassword(str[1], str[2], pc); //1 - password, 2 - email
+                        break;
+                    case PaintClientProtocolType.SendEmail: //In case client sends Email
+                        DataBaseManager.CheckEmail(str[1], pc); //1 - email
+                        break;
+
                     default:
 
                         break;
