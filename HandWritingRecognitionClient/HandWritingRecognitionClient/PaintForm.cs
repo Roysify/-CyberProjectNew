@@ -108,12 +108,12 @@ namespace HandWritingRecognitionClient
 
                     {//we need to create a Graphics object to draw on the picture box, its our main tool
 
-                        //when making a Pen object, you can just give it color only or give it color and pen size
                         g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                        g.DrawLine(new Pen(Color.Black, 2), lastPoint, e.Location);
-                        //g.SmoothingMode = SmoothingMode.AntiAlias;
+                        Pen p = new Pen(Color.Black, 4);
+                        p.SetLineCap(System.Drawing.Drawing2D.LineCap.Round, System.Drawing.Drawing2D.LineCap.Round, System.Drawing.Drawing2D.DashCap.Round);
+                        g.DrawLine(p, lastPoint, e.Location);
+                        g.SmoothingMode = SmoothingMode.AntiAlias;
                         //this is to give the drawing a more smoother, less sharper look
-
                     }
 
                     pictureBox1.Invalidate();//refreshes the picturebox
@@ -130,6 +130,7 @@ namespace HandWritingRecognitionClient
         {
             this.Invoke(new DelGotAResult(ShowResult), result);
         } //using delegate to show the result from server
+
         protected delegate void DelGotAResult(string result);
 
         public void ShowResult(string result) //shows result

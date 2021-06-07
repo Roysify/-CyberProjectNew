@@ -54,7 +54,7 @@ namespace HandWritingRecognitionServer
         {
             string dbPath = "DB.mdf";
             DAL dal = new DAL(dbPath);
-            string selectSql = "select * from users where Username ='" + username + "'and Email = '" + email + "'";
+            string selectSql = "select * from users where Username ='" + username + "'or Email = '" + email + "'";
             DataTable dt = dal.GetDataTable(selectSql);
             if (dt.Rows.Count == 0)
             {
