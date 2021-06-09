@@ -14,6 +14,8 @@ namespace HandWritingRecognitionClient
     {
         Point lastPoint = Point.Empty;//Point.Empty represents null for a Point object
         bool isMouseDown = new Boolean();//this is used to evaluate whether our mousebutton is down or not
+        private string key = "b14ca5898a4e4133bbce2ea2315a1916";
+
 
         public PaintForm()
         {
@@ -38,7 +40,7 @@ namespace HandWritingRecognitionClient
         {
             SendMessage("picture", PaintClientProtocolType.SendPicture);
             Thread.Sleep(150);
-            SendPicture(ImageToByteArray(pictureBox1.Image));
+            SendPicture(AesOperation.EncryptPicture(ImageToByteArray(pictureBox1.Image),key));
 
         }
 

@@ -34,9 +34,19 @@ namespace HandWritingRecognitionClient
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // Password_Box
+            // 
+            this.Password_Box.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            this.Password_Box.Text = "roei12345";
+            // 
+            // Username_Box
+            // 
+            this.Username_Box.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(227, 9);
+            this.label1.Location = new System.Drawing.Point(340, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // label5
             // 
@@ -44,10 +54,9 @@ namespace HandWritingRecognitionClient
             this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.Location = new System.Drawing.Point(14, 191);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(21, 294);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 13);
+            this.label5.Size = new System.Drawing.Size(202, 20);
             this.label5.TabIndex = 11;
             this.label5.Text = "Forgot Your Password ?";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -59,11 +68,11 @@ namespace HandWritingRecognitionClient
             this.Registration_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Registration_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Registration_Btn.ForeColor = System.Drawing.Color.White;
-            this.Registration_Btn.Location = new System.Drawing.Point(201, 322);
-            this.Registration_Btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Registration_Btn.Location = new System.Drawing.Point(302, 495);
+            this.Registration_Btn.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Registration_Btn.Name = "Registration_Btn";
             this.Registration_Btn.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Registration_Btn.Size = new System.Drawing.Size(161, 27);
+            this.Registration_Btn.Size = new System.Drawing.Size(242, 42);
             this.Registration_Btn.TabIndex = 12;
             this.Registration_Btn.Text = "Create an account";
             this.Registration_Btn.UseVisualStyleBackColor = false;
@@ -75,10 +84,10 @@ namespace HandWritingRecognitionClient
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(113, 223);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button1.Location = new System.Drawing.Point(170, 343);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 27);
+            this.button1.Size = new System.Drawing.Size(110, 42);
             this.button1.TabIndex = 13;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
@@ -86,11 +95,12 @@ namespace HandWritingRecognitionClient
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.ClientSize = new System.Drawing.Size(876, 555);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Registration_Btn);
             this.Controls.Add(this.label5);
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "LoginForm";
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.Registration_Btn, 0);

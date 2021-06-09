@@ -19,6 +19,8 @@ namespace HandWritingRecognitionServer
         private string _clientIP;
         // used for sending and reciving data
         private byte[] data;
+        private string key = "b14ca5898a4e4133bbce2ea2315a1916";
+
 
 
         public bool got_Public_key = false;
@@ -157,7 +159,7 @@ namespace HandWritingRecognitionServer
             else if (pictureIsSent)
             {
                 pictureIsSent = false;
-                SendResult(TesseractTextFromImage.ConvertImageToText(data));
+                SendResult(TesseractTextFromImage.ConvertImageToText(AesOperation.DecryptPicture(data,key)));
             }
             else
             {
