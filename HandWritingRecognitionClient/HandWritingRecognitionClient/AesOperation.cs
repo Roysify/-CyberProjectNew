@@ -50,14 +50,10 @@ namespace HandWritingRecognitionClient
                 ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
 
                 using (MemoryStream memoryStream = new MemoryStream(buffer))
+                using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, decryptor, CryptoStreamMode.Read))
+                using (StreamReader streamReader = new StreamReader((Stream)cryptoStream))
                 {
-                    using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader streamReader = new StreamReader((Stream)cryptoStream))
-                        {
-                            return streamReader.ReadToEnd();
-                        }
-                    }
+                    return streamReader.ReadToEnd();
                 }
             }
         }//sample
@@ -68,19 +64,23 @@ namespace HandWritingRecognitionClient
 
             using (Aes aes = Aes.Create())
             {
+                aes.Padding = PaddingMode.Zeros;
                 aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.IV = iv;
-                using (MemoryStream mstream = new MemoryStream())
-                using (AesCryptoServiceProvider aesProvider = new AesCryptoServiceProvider())
-                using (CryptoStream cryptoStream = new CryptoStream(mstream, aesProvider.CreateEncryptor(aes.Key, aes.IV), CryptoStreamMode.Write))
+
+                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+
+                using (MemoryStream memoryStream = new MemoryStream())
                 {
-                    cryptoStream.Write(bytesToEncrypt, 0, bytesToEncrypt.Length);
-                    return mstream.ToArray();
+                    using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, encryptor, CryptoStreamMode.Write))
+                    {
+                        cryptoStream.Write(bytesToEncrypt, 0, bytesToEncrypt.Length);
+                        cryptoStream.FlushFinalBlock();
+
+                        return memoryStream.ToArray();
+                    }
                 }
-
             }
-
-        }//the one that used
-
+        }
     }
 }

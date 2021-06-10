@@ -13,19 +13,22 @@ namespace HandWritingRecognitionServer
 
             using (Aes aes = Aes.Create())
             {
+                aes.Padding = PaddingMode.Zeros;
                 aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.IV = iv;
-                using (MemoryStream mstream = new MemoryStream())
-                using (AesCryptoServiceProvider aesProvider = new AesCryptoServiceProvider())
-                using (CryptoStream cryptoStream = new CryptoStream(mstream, aesProvider.CreateDecryptor(aes.Key, aes.IV), CryptoStreamMode.Write))
+
+                using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
                 {
-                    cryptoStream.Write(bytesToDecrypt, 0, bytesToDecrypt.Length);
-                    return mstream.ToArray();
+                    using (var ms = new MemoryStream())
+                    using (var cryptoStream = new CryptoStream(ms, decryptor, CryptoStreamMode.Write))
+                    {
+                        cryptoStream.Write(bytesToDecrypt, 0, bytesToDecrypt.Length);
+                        cryptoStream.FlushFinalBlock();
+
+                        return ms.ToArray();
+                    }
                 }
-
             }
-
         }
-
     }
 }
