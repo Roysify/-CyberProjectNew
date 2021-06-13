@@ -144,8 +144,9 @@ namespace HandWritingRecognitionClient
                     break;
 
                 case PaintClientProtocolType.OkValidPasswordAndUsername:
-
-                    this.Invoke(new DelSuccessfullyLoggedIn(SuccessfullyLoggedIn));
+                    string emailCode = str[1];
+                    pf = new PaintForm();
+                    this.Invoke(new DelLoginStepTwo(LoginStepTwo), emailCode);
                     break;
 
                 case PaintClientProtocolType.SendPublicKey:
@@ -173,6 +174,14 @@ namespace HandWritingRecognitionClient
                 case PaintClientProtocolType.EmailExists:
                     this.Invoke(new DelEmailExists(EmailExists));
                     break;
+                case PaintClientProtocolType.CorrectEmailCode:
+                    //this.Invoke(new DelSuccessfullyLoggedIn(SuccessfullyLoggedIn));
+
+                    break;
+                case PaintClientProtocolType.IncorrectEmailCode:
+                    MessageBox.Show("Code is incorrect.");
+                    break;
+
 
                 default:
 
@@ -204,7 +213,7 @@ namespace HandWritingRecognitionClient
         }
 
         protected delegate void DelSuccessfullyLoggedIn();
-        protected void SuccessfullyLoggedIn() //in case of a succseful log in
+        protected void SuccessfullyLoggedIn() //in case of a successful log in
         {
             this.Hide();
             pf = new PaintForm();
@@ -216,20 +225,28 @@ namespace HandWritingRecognitionClient
         private void SuccessfullyRegistered()
         {
             this.Hide();
-            pf = new PaintForm();
-            pf.Show();
+            LoginForm lf = new LoginForm();
+            lf.Show();
         }
 
         protected delegate void DelEmailExists();
         private void EmailExists()
         {
-            ForgotPassword.SendCode();
+            ForgotPassword.ValidateEmail();
+        }
+
+        protected delegate void DelLoginStepTwo(string emailCode);
+        private void LoginStepTwo(string emailCode)
+        {
+            this.Hide();
+            LoginStepTwo lst = new LoginStepTwo(emailCode,pf);
+            lst.Show();
         }
 
 
-        protected void RenewPassword(string password,string email)
+        protected void RenewPassword(string password, string email)
         {
-            SendMessage(password+'#'+email, PaintClientProtocolType.SendPassword);
+            SendMessage(password.GetHashCode() + '#' + email, PaintClientProtocolType.SendPassword);
         }
     }
 }

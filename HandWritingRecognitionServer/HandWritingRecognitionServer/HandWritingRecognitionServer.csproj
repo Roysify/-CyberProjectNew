@@ -58,6 +58,7 @@
     <Compile Include="DAL.cs" />
     <Compile Include="DataBaseManager.cs" />
     <Compile Include="Data\PaintClientProtocolType.cs" />
+    <Compile Include="EmailValidation.cs" />
     <Compile Include="PaintClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -48,11 +48,18 @@
   <ItemGroup>
     <Compile Include="AesOperation.cs" />
     <Compile Include="Data\PaintClientProtocolType.cs" />
+    <Compile Include="EmailValidation.cs" />
     <Compile Include="ForgotPassword.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginStepTwo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginStepTwo.Designer.cs">
+      <DependentUpon>LoginStepTwo.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -92,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginStepTwo.resx">
+      <DependentUpon>LoginStepTwo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PaintForm.resx">
       <DependentUpon>PaintForm.cs</DependentUpon>

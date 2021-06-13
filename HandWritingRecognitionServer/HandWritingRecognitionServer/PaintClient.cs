@@ -17,11 +17,9 @@ namespace HandWritingRecognitionServer
         private TcpClient _client;
         public RSA rsa;
         private string _clientIP;
-        // used for sending and reciving data
-        private byte[] data;
-        private string key = "b14ca5898a4e4133bbce2ea2315a1916";
 
-
+        private byte[] data;// used for sending and reciving data
+        private string key = "b14ca5898a4e4133bbce2ea2315a1916";//symmetric encryption key - identical to clients
 
         public bool got_Public_key = false;
         string messageReceived = "";
@@ -69,6 +67,30 @@ namespace HandWritingRecognitionServer
                 Console.WriteLine(ex.ToString());
             }
         } //sends message to client
+        public void SendMessage(string message)
+        {
+            try
+            {
+                System.Net.Sockets.NetworkStream ns;
+
+                // we use lock to present multiple threads from using the networkstream object
+                // this is likely to occur when the server is connected to multiple clients all of 
+                // them trying to access to the networkstram at the same time.
+                lock (_client.GetStream())
+                {
+                    ns = _client.GetStream();
+                }
+                // Send data to the client
+                byte[] bytesToSend = System.Text.Encoding.ASCII.GetBytes(rsa.Encrypt(message));
+                ns.Write(bytesToSend, 0, bytesToSend.Length);
+                ns.Flush();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        } //sends message to client
+
         private void SendResult(string result)
         {
             try

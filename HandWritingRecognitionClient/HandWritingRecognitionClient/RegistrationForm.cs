@@ -27,10 +27,10 @@ namespace HandWritingRecognitionClient
                         CreateTCPConnection();
                         Thread.Sleep(400);
                         first = true;
-                        Register(Username_Box.Text, Password_Box.Text, EmailBox.Text);
+                        Register(Username_Box.Text, Password_Box.Text.GetHashCode().ToString(), EmailBox.Text);
                     }
                     else
-                        Register(Username_Box.Text, Password_Box.Text, EmailBox.Text);
+                        Register(Username_Box.Text, Password_Box.Text.GetHashCode().ToString(), EmailBox.Text);
 
 
                 }

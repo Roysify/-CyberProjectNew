@@ -13,7 +13,7 @@ namespace HandWritingRecognitionClient
             InitializeComponent();
             loadCaptchaImage();
         }
-        private bool verified = false;
+        private bool captchaVerified = false;
         private int number;
 
         private void button1_Click(object sender, EventArgs e) //logging in
@@ -27,11 +27,11 @@ namespace HandWritingRecognitionClient
                     {
                         CreateTCPConnection();
                         Thread.Sleep(400);
-                        TryToConnect(Username_Box.Text, Password_Box.Text);
+                        TryToConnect(Username_Box.Text, Password_Box.Text.GetHashCode().ToString());
                     }
                     else
                     {
-                        TryToConnect(Username_Box.Text, Password_Box.Text);
+                        TryToConnect(Username_Box.Text, Password_Box.Text.GetHashCode().ToString());
                     }
 
 
@@ -46,7 +46,6 @@ namespace HandWritingRecognitionClient
         private void Client_Login_FormClosed(object sender, FormClosedEventArgs e) //window closed
         {
             Application.Exit();
-
         }
 
         private void Registration_Btn_Click(object sender, EventArgs e)
@@ -67,19 +66,22 @@ namespace HandWritingRecognitionClient
         {
             if (textBox1.Text == number.ToString())
             {
-                verified = true;
-                MessageBox.Show("verified");
+                captchaVerified = true;
+                verBtn.Text = "verified";
+                verBtn.BackColor = Color.LightSeaGreen;
+                verBtn.Enabled = false;
             }
             else
             {
-                verified = false;
+                captchaVerified = false;
                 MessageBox.Show("invalid");
             }
 
         }
+
         private bool accessGainCheck()
         {
-            if (verified)
+            if (captchaVerified)
             {
 
             }
@@ -95,9 +97,11 @@ namespace HandWritingRecognitionClient
             else
             {
                 MessageBox.Show("Details are not viable");
+                return false;
             }
             return true;
         }
+
         private void loadCaptchaImage()
         {
             Random r1 = new Random();
@@ -108,6 +112,7 @@ namespace HandWritingRecognitionClient
             graphics.DrawString(number.ToString(), font, Brushes.Green, new Point(0, 0));
             pictureBox1.Image = image;
         }
+
 
     }
 }

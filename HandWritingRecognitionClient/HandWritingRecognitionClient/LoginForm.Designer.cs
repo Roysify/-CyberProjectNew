@@ -35,17 +35,19 @@ namespace HandWritingRecognitionClient
             this.verBtn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Password_Box
             // 
             this.Password_Box.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.Password_Box.Text = "roei12345";
+            this.Password_Box.Text = "Cyber12345";
             // 
             // Username_Box
             // 
             this.Username_Box.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Username_Box.Text = "Cyber12345";
             // 
             // label1
             // 
@@ -73,7 +75,7 @@ namespace HandWritingRecognitionClient
             this.Registration_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Registration_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Registration_Btn.ForeColor = System.Drawing.Color.White;
-            this.Registration_Btn.Location = new System.Drawing.Point(201, 322);
+            this.Registration_Btn.Location = new System.Drawing.Point(412, 322);
             this.Registration_Btn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Registration_Btn.Name = "Registration_Btn";
             this.Registration_Btn.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -89,7 +91,7 @@ namespace HandWritingRecognitionClient
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(113, 294);
+            this.button1.Location = new System.Drawing.Point(335, 322);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(73, 27);
@@ -104,10 +106,10 @@ namespace HandWritingRecognitionClient
             this.verBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.verBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.verBtn.ForeColor = System.Drawing.Color.White;
-            this.verBtn.Location = new System.Drawing.Point(113, 252);
+            this.verBtn.Location = new System.Drawing.Point(111, 295);
             this.verBtn.Margin = new System.Windows.Forms.Padding(2);
             this.verBtn.Name = "verBtn";
-            this.verBtn.Size = new System.Drawing.Size(61, 23);
+            this.verBtn.Size = new System.Drawing.Size(63, 23);
             this.verBtn.TabIndex = 16;
             this.verBtn.Text = "Verify";
             this.verBtn.UseVisualStyleBackColor = false;
@@ -115,25 +117,38 @@ namespace HandWritingRecognitionClient
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(113, 228);
+            this.textBox1.Location = new System.Drawing.Point(111, 271);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
+            this.textBox1.Size = new System.Drawing.Size(114, 20);
             this.textBox1.TabIndex = 15;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(232, 219);
+            this.pictureBox1.Location = new System.Drawing.Point(239, 266);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(75, 41);
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label4.Location = new System.Drawing.Point(11, 271);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 20);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Captcha";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.verBtn);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox1);
@@ -148,6 +163,7 @@ namespace HandWritingRecognitionClient
             this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.Controls.SetChildIndex(this.textBox1, 0);
             this.Controls.SetChildIndex(this.verBtn, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.Username_Box, 0);
@@ -167,5 +183,6 @@ namespace HandWritingRecognitionClient
         private System.Windows.Forms.Button verBtn;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label4;
     }
 }

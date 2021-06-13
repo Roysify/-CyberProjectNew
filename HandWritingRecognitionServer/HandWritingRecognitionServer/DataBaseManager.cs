@@ -7,10 +7,10 @@ namespace HandWritingRecognitionServer
 {
     public static class DataBaseManager
     {
+        private static string dbPath = "DB.mdf";
         //managing the methods that are used to get and transport info to the database
         public static bool IsUserExists(string username, string password, PaintClient pc)
         {
-            string dbPath = "DB.mdf";
             DAL dal = new DAL(dbPath);
             string selectSql = "select * from Users where Password ='" + password + "' and Username = '" + username + "'";
             DataTable dt = dal.GetDataTable(selectSql);
@@ -18,8 +18,13 @@ namespace HandWritingRecognitionServer
 
             if (exists)
             {
-                pc.SendMessage(PaintClientProtocolType.OkValidPasswordAndUsername);
                 Console.WriteLine("user " + username + " is connected");
+                string email = dt.Rows[0][3].ToString();
+                EmailValidation ev = new EmailValidation(email);
+                ev.SendValidationCode();
+                string msg = ProtocolManager.CreateProtocol(ev.GetRandomCode(), PaintClientProtocolType.OkValidPasswordAndUsername);
+                pc.SendMessage(msg);
+
             }
             else
             {
@@ -31,7 +36,6 @@ namespace HandWritingRecognitionServer
 
         public static bool IsUsernameExists(string username, PaintClient pc)
         {
-            string dbPath = "DB.mdf";
             DAL dal = new DAL(dbPath);
             string selectSql = "select * from Users where Username = '" + username + "'";
             DataTable dt = dal.GetDataTable(selectSql);
@@ -52,7 +56,6 @@ namespace HandWritingRecognitionServer
 
         public static bool AddUser(string username, string password, string email, PaintClient pc)
         {
-            string dbPath = "DB.mdf";
             DAL dal = new DAL(dbPath);
             string selectSql = "select * from users where Username ='" + username + "'or Email = '" + email + "'";
             DataTable dt = dal.GetDataTable(selectSql);
@@ -69,7 +72,6 @@ namespace HandWritingRecognitionServer
 
         public static void ChangePassword(string newPassword, string email,PaintClient pc)
         {
-            string dbPath = "DB.mdf";
             DAL dal = new DAL(dbPath);
             string updateSql = "update users set password = '"+ newPassword+"' where Email ='" + email + "'";
             dal.UpdateDB(updateSql);
@@ -78,7 +80,6 @@ namespace HandWritingRecognitionServer
 
         public static void CheckEmail(string email,PaintClient pc)
         {
-            string dbPath = "DB.mdf";
             DAL dal = new DAL(dbPath);
             string selectSql = "select * from Users where Email ='" + email + "'";
             DataTable dt = dal.GetDataTable(selectSql);
@@ -96,5 +97,12 @@ namespace HandWritingRecognitionServer
             }
 
         }//checks if email exists
+        public static string GetEmail(string username)
+        {
+            DAL dal = new DAL(dbPath);
+            string selectSql = "select Email from Users where Username = '" + username + "'";
+            DataTable dt = dal.GetDataTable(selectSql);
+            return dt.Rows[0][0].ToString();
+        }
     }
 }

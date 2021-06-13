@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Sockets;
 
 namespace HandWritingRecognitionServer
@@ -15,7 +16,8 @@ namespace HandWritingRecognitionServer
             System.Net.IPAddress localAdd = System.Net.IPAddress.Parse(ipAddress);
             TcpListener listener = new TcpListener(localAdd, portNo);
             Console.WriteLine("Listening to ip {0} port: {1}", ipAddress, portNo);
-
+            //string path = new FileInfo("Log").Directory.FullName;
+            File.Create("Log");
             // Start listen to incoming connection requests
             listener.Start();
 

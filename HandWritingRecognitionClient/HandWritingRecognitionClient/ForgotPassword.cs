@@ -14,6 +14,7 @@ namespace HandWritingRecognitionClient
         private static string userEmail;//email from user
         private static string randomCode = "";// random code used for varificition
 
+
         public ForgotPassword()
         {
             InitializeComponent();
@@ -23,7 +24,6 @@ namespace HandWritingRecognitionClient
         {
             if (EmailCheck())
             {
-                userEmail = Email_Box.Text;
                 try
                 {
                     CreateTCPConnection();
@@ -33,21 +33,23 @@ namespace HandWritingRecognitionClient
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
-
                 }
 
             }
-            else
-            {
-                MessageBox.Show("email is not valid");
-            }
-
         }
 
         protected bool EmailCheck()
         {
-            string usr = Email_Box.Text;
-            return usr.Length > 4 && !usr.Contains('#');
+            userEmail = Email_Box.Text;
+            if (userEmail.Length > 4 && !userEmail.Contains('#'))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("email is not valid");
+                return false;
+            }
         }
 
         protected void SendEmail(string email) //send email
@@ -69,35 +71,6 @@ namespace HandWritingRecognitionClient
             }
         }
 
-        public static void SendCode()
-        {
-            try
-            {
-                MailMessage mm = new MailMessage("cyberprojectph@gmail.com", userEmail);
-                mm.Subject = "Password Recovery";
-                Random rnd = new Random();
-                randomCode = rnd.Next(100000, 999999).ToString();
-                mm.Body = string.Format($"Random code: {randomCode}");
-                mm.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.EnableSsl = true;
-                NetworkCredential NetworkCred = new NetworkCredential();
-                NetworkCred.UserName = "cyberprojectph@gmail.com";
-                NetworkCred.Password = "cyberp12345";
-                smtp.UseDefaultCredentials = true;
-                smtp.Credentials = NetworkCred;
-                smtp.Port = 587;
-                smtp.Send(mm);
-                MessageBox.Show("Confirmation code was sent to your email");
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-
-        }
-
         private void Submit_Btn_Click(object sender, EventArgs e)
         {
             if (randomCode == Code_Box.Text)
@@ -113,6 +86,12 @@ namespace HandWritingRecognitionClient
             this.Hide();
             LoginForm lf = new LoginForm();
             lf.Show();
+        }
+        public static void ValidateEmail()
+        {
+            EmailValidation ev = new EmailValidation(userEmail);
+            randomCode = ev.GetRandomCode();
+            ev.SendResetCode();
         }
     }
 }

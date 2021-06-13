@@ -20,5 +20,9 @@
         public const int PasswordChanged = 14;
         public const int EmailExists = 15;
         public const int EmailInvalid = 16;
+        public const int CorrectEmailCode = 17;
+        public const int IncorrectEmailCode = 18;
+
+
     }
 }
