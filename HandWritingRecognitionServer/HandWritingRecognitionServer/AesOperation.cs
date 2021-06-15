@@ -7,6 +7,14 @@ namespace HandWritingRecognitionServer
     public static class AesOperation
     {
         public static byte[] DecryptPicture(byte[] bytesToDecrypt, string key)
+        /*
+             decrypts picture bytes using a known to client key
+            Arguments:
+                bytesToEncrypt (byte[]) - picture bytes
+                key (string) - decryption key
+             Return:
+                void
+        */
         {
             byte[] iv = new byte[16];
 

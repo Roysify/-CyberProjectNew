@@ -4,8 +4,6 @@ using System.Collections;
 using System.IO;
 using System.Net.Sockets;
 
-
-
 namespace HandWritingRecognitionServer
 {
     public class PaintClient
@@ -194,7 +192,7 @@ namespace HandWritingRecognitionServer
                 ProtocolManager.ReadProtocol(messageReceived, this);
             }
 
-        }
+        } //orders messages based on knwon events
 
         //public void Broadcast(int msgType)
         //{

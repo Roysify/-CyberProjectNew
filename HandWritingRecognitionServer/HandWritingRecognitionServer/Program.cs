@@ -43,6 +43,13 @@ namespace HandWritingRecognitionServer
 
         }
         public static string GetLocalIPAddress()
+        /*
+             gets local ip address
+            Arguments:
+                none
+             Return:
+                ip addres (string)
+        */
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ip in host.AddressList)

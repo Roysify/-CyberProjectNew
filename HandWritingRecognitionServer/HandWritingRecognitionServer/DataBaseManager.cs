@@ -103,6 +103,6 @@ namespace HandWritingRecognitionServer
             string selectSql = "select Email from Users where Username = '" + username + "'";
             DataTable dt = dal.GetDataTable(selectSql);
             return dt.Rows[0][0].ToString();
-        }
+        } //gets email
     }
 }
