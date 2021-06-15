@@ -8,8 +8,15 @@ namespace HandWritingRecognitionServer
     {
         private string userEmail;//email from user
         private string randomCode;// random code used for varificition
-        private string senderEmail = "cyberprojectph@gmail.com";
+        private string senderEmail = "cyberprojectph@gmail.com"; //sender email
         public EmailValidation(string userEmail)
+        /*
+         construction method that gets clients email and generates a random code
+        Arguments:
+            userEmail (string) - users email used to send the random code
+         Return:
+            void
+        */
         {
             Random rnd = new Random();
             randomCode = rnd.Next(100000, 999999).ToString();
@@ -17,10 +24,24 @@ namespace HandWritingRecognitionServer
         }
 
         public string GetRandomCode()
+        /*
+         gets random code
+        Arguments:
+            none
+         Return:
+            random code (string)
+        */
         {
             return randomCode;
         }
         public void SendValidationCode()
+        /*
+         sends user random code used for varification
+        Arguments:
+            none
+         Return:
+            void
+        */
         {
             try
             {

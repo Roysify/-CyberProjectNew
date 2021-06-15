@@ -1,6 +1,7 @@
 ﻿using HandWritingRecognitionServer.Data;
 using System;
 using System.Collections;
+using System.IO;
 using System.Net.Sockets;
 
 
@@ -25,12 +26,14 @@ namespace HandWritingRecognitionServer
         string messageReceived = "";
         public bool pictureIsSent = false;
 
-        public PaintClient(TcpClient client)
+        public PaintClient(TcpClient client,string logPath)
         {
             rsa = new RSA();
             _client = client;
             // get the ip address of the client to register him with our client list
             _clientIP = client.Client.RemoteEndPoint.ToString();
+
+            File.AppendAllText(logPath, client.Client.RemoteEndPoint + Environment.NewLine + " " + DateTime.UtcNow);
 
             // Add the new client to our clients collection
             AllClients.Add(_clientIP, this);

@@ -16,7 +16,14 @@ namespace HandWritingRecognitionClient
             InitializeComponent();
         }
 
-        private void Register_BTN_Click(object sender, EventArgs e) //register nutton click
+        private void Register_BTN_Click(object sender, EventArgs e)
+            /*
+         creates connection and sends users details to server
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
         {
             if (FieldCheck())
             {
@@ -25,7 +32,7 @@ namespace HandWritingRecognitionClient
                     if (!first) //בדיקה ראשונה שבה נוצר הקליינט
                     {
                         CreateTCPConnection();
-                        Thread.Sleep(400);
+                        Thread.Sleep(400); //sleeps to allow right flow of messaging
                         first = true;
                         Register(Username_Box.Text, Password_Box.Text.GetHashCode().ToString(), EmailBox.Text);
                     }
@@ -50,17 +57,26 @@ namespace HandWritingRecognitionClient
             SendMessage(user + "#" + password + "#" + email, PaintClientProtocolType.Register);
         }//sends message to the server with username from user
 
-        private void Back_BTN_Click(object sender, EventArgs e)
-        {
-
-        }//return to login form
-
-        private void RegistrationForm_FormClosed(object sender, FormClosedEventArgs e)//window closed
+        private void RegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
+        /*
+         closes application
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
         {
             Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)
+        /*
+        return to login form
+       Arguments:
+           winform defult
+        Return:
+           void
+       */
         {
             this.Hide();
             LoginForm clientLogin = new LoginForm();

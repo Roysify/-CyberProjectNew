@@ -11,7 +11,7 @@ namespace HandWritingRecognitionClient
 {
     public partial class ResetPassword : HandWritingRecognitionClient.ParentForm
     {
-        bool first = false;
+        bool first = false; //is it first click
         string email;//email from user
 
         public ResetPassword(string email)
@@ -21,15 +21,22 @@ namespace HandWritingRecognitionClient
         }
 
         private void Send_BTN_Click(object sender, EventArgs e)
+        /*
+         creates connection and sends users password
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
         {
             if (FieldCheck())
             {
                 try
                 {
-                    if (!first) //בדיקה ראשונה שבה נוצר הקליינט
+                    if (!first) //first time clicking
                     {
                         CreateTCPConnection();
-                        Thread.Sleep(800);
+                        Thread.Sleep(800);//sleeps to allow right flow of messaging
                         first = true;
                         RenewPassword(Password_Box.Text,email);
                     }

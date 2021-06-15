@@ -14,7 +14,7 @@ namespace HandWritingRecognitionClient
     {
         Point lastPoint = Point.Empty;//Point.Empty represents null for a Point object
         bool isMouseDown = new Boolean();//this is used to evaluate whether our mousebutton is down or not
-        private string key = "b14ca5898a4e4133bbce2ea2315a1916";
+        private string key = "b14ca5898a4e4133bbce2ea2315a1916"; //key used for symmetric encryption and decryption
 
 
         public PaintForm()
@@ -39,7 +39,7 @@ namespace HandWritingRecognitionClient
         private void button2_Click(object sender, EventArgs e)//send picture button press
         {
             SendMessage("picture", PaintClientProtocolType.SendPicture);
-            Thread.Sleep(150);
+            Thread.Sleep(150);//sleeps to allow right flow of messaging
             SendPicture(AesOperation.EncryptPicture(ImageToByteArray(pictureBox1.Image),key));
 
         }
@@ -133,7 +133,7 @@ namespace HandWritingRecognitionClient
             this.Invoke(new DelGotAResult(ShowResult), result);
         } //using delegate to show the result from server
 
-        protected delegate void DelGotAResult(string result);
+        protected delegate void DelGotAResult(string result); //delegate
 
         public void ShowResult(string result) //shows result
         {
@@ -141,6 +141,13 @@ namespace HandWritingRecognitionClient
         }
 
         private void Back_BTN_Click(object sender, EventArgs e)
+        /*
+         returns to login form
+        Arguments:
+            winform defult
+        return:
+            void
+        */
         {
             this.Hide();
             LoginForm pf = new LoginForm();
@@ -148,6 +155,13 @@ namespace HandWritingRecognitionClient
         }
 
         private void UploadBtn_Click(object sender, EventArgs e)
+        /*
+         uploads an image from computer to paint client
+        Arguments:
+            winform defult
+        return:
+            void
+        */
         {
             OpenFileDialog of = new OpenFileDialog();
             of.Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|Tiff Image (.tiff)|*.tiff|Wmf Image (.wmf)|*.wmf";

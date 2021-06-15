@@ -8,13 +8,20 @@ namespace HandWritingRecognitionServer
     {
         public static string ConvertImageToText(byte[] bytes)
         {
-
-            using (var api = OcrApi.Create())
+            try
             {
-                api.Init(Languages.English);
-                string plainText = api.GetTextFromImage(ToImage(bytes));
+                using (var api = OcrApi.Create())
+                {
+                    api.Init(Languages.English);
+                    string plainText = api.GetTextFromImage(ToImage(bytes));
 
-                return plainText;
+                    return plainText;
+                }
+
+            }
+            catch (System.Exception)
+            {
+                return "I couldn't catch that.";
             }
         }// converts image to text
         private static Bitmap ToImage(byte[] imageData)

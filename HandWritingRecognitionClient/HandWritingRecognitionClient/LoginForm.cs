@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using System.Drawing;
 
 
 namespace HandWritingRecognitionClient
@@ -11,12 +11,20 @@ namespace HandWritingRecognitionClient
         public LoginForm() : base()
         {
             InitializeComponent();
-            loadCaptchaImage();
+            loadCaptchaImage(); //loads cpatcha image
         }
-        private bool captchaVerified = false;
-        private int number;
+        private bool captchaVerified = false; //has the client verified captcha
+        private int captchaNumber; //random generated captcha number
 
-        private void button1_Click(object sender, EventArgs e) //logging in
+        private void button1_Click(object sender, EventArgs e)
+        /*
+         creates connection and sends users email to server
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
+
         {
             if (accessGainCheck())
             {
@@ -26,7 +34,7 @@ namespace HandWritingRecognitionClient
                     if (!clientConnected)
                     {
                         CreateTCPConnection();
-                        Thread.Sleep(400);
+                        Thread.Sleep(400); //sleeps to allow right flow of messaging
                         TryToConnect(Username_Box.Text, Password_Box.Text.GetHashCode().ToString());
                     }
                     else
@@ -43,12 +51,26 @@ namespace HandWritingRecognitionClient
             }
         }
 
-        private void Client_Login_FormClosed(object sender, FormClosedEventArgs e) //window closed
+        private void Client_Login_FormClosed(object sender, FormClosedEventArgs e)
+        /*
+         Closes window
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
         {
             Application.Exit();
         }
 
         private void Registration_Btn_Click(object sender, EventArgs e)
+        /*
+         opens registration form
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
         {
             this.Hide();
             RegistrationForm registrationForm = new RegistrationForm();
@@ -56,6 +78,13 @@ namespace HandWritingRecognitionClient
         }
 
         private void label5_Click(object sender, EventArgs e)
+        /*
+         opens forgot password form
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
         {
             this.Hide();
             ForgotPassword fp = new ForgotPassword();
@@ -63,8 +92,15 @@ namespace HandWritingRecognitionClient
         }
 
         private void verBtn_Click(object sender, EventArgs e)
+        /*
+         comparing input numbers aginst captcha for validation
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
         {
-            if (textBox1.Text == number.ToString())
+            if (textBox1.Text == captchaNumber.ToString())
             {
                 captchaVerified = true;
                 verBtn.Text = "verified";
@@ -80,6 +116,13 @@ namespace HandWritingRecognitionClient
         }
 
         private bool accessGainCheck()
+        /*
+         evaluating access confirmation
+        Arguments:
+            none
+         Return:
+            bool
+        */
         {
             if (captchaVerified)
             {
@@ -103,13 +146,20 @@ namespace HandWritingRecognitionClient
         }
 
         private void loadCaptchaImage()
+        /*
+         loads captcha image
+        Arguments:
+            none
+         Return:
+            void
+        */
         {
             Random r1 = new Random();
-            number = r1.Next(100, 1000);
+            captchaNumber = r1.Next(100, 1000);
             var image = new Bitmap(this.pictureBox1.Width, this.pictureBox1.Height);
             var font = new Font("TimesNewRoman", 25, FontStyle.Bold, GraphicsUnit.Pixel);
             var graphics = Graphics.FromImage(image);
-            graphics.DrawString(number.ToString(), font, Brushes.Green, new Point(0, 0));
+            graphics.DrawString(captchaNumber.ToString(), font, Brushes.Green, new Point(0, 0));
             pictureBox1.Image = image;
         }
 

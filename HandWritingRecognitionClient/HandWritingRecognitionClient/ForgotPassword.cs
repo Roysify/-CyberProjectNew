@@ -1,18 +1,16 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Net.Mail;
+﻿using HandWritingRecognitionClient.Data;
+using System;
 using System.Linq;
 using System.Net.Sockets;
-using HandWritingRecognitionClient.Data;
-using System.Net;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace HandWritingRecognitionClient
 {
     public partial class ForgotPassword : HandWritingRecognitionClient.ParentForm
     {
-        private static string userEmail;//email from user
-        private static string randomCode = "";// random code used for varificition
+        private static string userEmail; //email from user
+        private static string randomCode = ""; //random code used for varificition
 
 
         public ForgotPassword()
@@ -20,14 +18,22 @@ namespace HandWritingRecognitionClient
             InitializeComponent();
         }
 
-        private void Send_BTN_Click(object sender, EventArgs e)//sends the email to the server
+        private void Send_BTN_Click(object sender, EventArgs e)
+        /*
+         creates connection and sends users email to server
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
+
         {
             if (EmailCheck())
             {
                 try
                 {
                     CreateTCPConnection();
-                    Thread.Sleep(600);
+                    Thread.Sleep(600); //sleeps to allow right flow of messaging
                     SendEmail(userEmail);
                 }
                 catch (Exception ex)
@@ -39,6 +45,14 @@ namespace HandWritingRecognitionClient
         }
 
         protected bool EmailCheck()
+        /*
+         checks email
+        Arguments:
+            none
+         Return:
+            bool
+        */
+
         {
             userEmail = Email_Box.Text;
             if (userEmail.Length > 4 && !userEmail.Contains('#'))
@@ -52,16 +66,22 @@ namespace HandWritingRecognitionClient
             }
         }
 
-        protected void SendEmail(string email) //send email
+        protected void SendEmail(string email)
+        /*
+         sends email to server
+        Arguments:
+            Email (string) - users email
+         Return:
+            void
+        */
+
         {
             try
             {
-                // send message to the server
                 string message = "";
                 NetworkStream ns = client.GetStream();
                 message = CreateProtocol(email, PaintClientProtocolType.SendEmail);
                 byte[] data = System.Text.Encoding.ASCII.GetBytes(rsa.Encrypt(message));
-                // send the text
                 ns.Write(data, 0, data.Length);
                 ns.Flush();
             }
@@ -72,6 +92,14 @@ namespace HandWritingRecognitionClient
         }
 
         private void Submit_Btn_Click(object sender, EventArgs e)
+        /*
+         opens reset password form
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
+
         {
             if (randomCode == Code_Box.Text)
             {
@@ -82,12 +110,28 @@ namespace HandWritingRecognitionClient
         }
 
         private void Back_BTN_Click(object sender, EventArgs e)
+        /*
+         return to login form
+        Arguments:
+            winform defult
+         Return:
+            void
+        */
+
         {
             this.Hide();
             LoginForm lf = new LoginForm();
             lf.Show();
         }
         public static void ValidateEmail()
+        /*
+         opens email validation form
+        Arguments:
+            none
+         Return:
+            void
+        */
+
         {
             EmailValidation ev = new EmailValidation(userEmail);
             randomCode = ev.GetRandomCode();
